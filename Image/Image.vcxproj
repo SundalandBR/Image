@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+***************************************************************************************************
+ Copyright (C) 2023 The Qt Company Ltd.
+ SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+***************************************************************************************************
+-->
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4DEBF47A-2419-4395-A34F-7D41B4F327A5}</ProjectGuid>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.22621.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.22621.0</WindowsTargetPlatformVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
+    <QtInstall>6.5.3_msvc2019_64</QtInstall>
+    <QtModules>core;gui;widgets</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
+    <QtInstall>6.5.3_msvc2019_64</QtInstall>
+    <QtModules>core;gui;widgets</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <ExecutablePath>D:\Qt\6.5.3\msvc2019_64\include\QtCharts;$(ExecutablePath)</ExecutablePath>
+    <IncludePath>D:\opencv\opencv\build\include;D:\Qt\6.5.3\msvc2019_64\include\QtCharts;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Qt\6.5.3\msvc2019_64\lib;D:\opencv\opencv\build\x64\vc16\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Link>
+      <AdditionalDependencies>opencv_world480d.lib;Qt6Chartsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="CurveChartView.cpp" />
+    <ClCompile Include="Curve_Spline.cpp" />
+    <ClCompile Include="GuidedFilter.cpp" />
+    <ClCompile Include="Image_blur.cpp" />
+    <ClCompile Include="Image_brightAcontras.cpp" />
+    <ClCompile Include="Image_ColorTemperature.cpp" />
+    <ClCompile Include="Image_contras_bright.cpp" />
+    <ClCompile Include="Image_crop.cpp" />
+    <ClCompile Include="Image_curve1.cpp" />
+    <ClCompile Include="Image_curve2.cpp" />
+    <ClCompile Include="Image_exposure.cpp" />
+    <ClCompile Include="Image_Histogram.cpp" />
+    <ClCompile Include="Image_HSL.cpp" />
+    <ClCompile Include="Image_processing.cpp" />
+    <ClCompile Include="Image_Removal.cpp" />
+    <ClCompile Include="Image_Removal_ui.cpp" />
+    <ClCompile Include="Image_Rotate.cpp" />
+    <ClCompile Include="Image_Rotate_ui.cpp" />
+    <ClCompile Include="Image_sharpening.cpp" />
+    <ClCompile Include="Image_text.cpp" />
+    <ClCompile Include="Image_whitebalance.cpp" />
+    <ClCompile Include="Qt_curve.cpp" />
+    <ClCompile Include="ViewLabel.cpp" />
+    <QtRcc Include="Image.qrc" />
+    <QtUic Include="Image.ui" />
+    <QtMoc Include="Image.h" />
+    <ClCompile Include="Image.cpp" />
+    <ClCompile Include="main.cpp" />
+    <QtUic Include="Image_brightAcontras.ui" />
+    <QtUic Include="Image_crop.ui" />
+    <QtUic Include="Image_curve1.ui" />
+    <QtUic Include="Image_curve2.ui" />
+    <QtUic Include="Image_processing.ui" />
+    <QtUic Include="Image_Removal_ui.ui" />
+    <QtUic Include="Image_Rotate_ui.ui" />
+    <QtUic Include="Image_text.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ViewLabel.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Image_text.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GuidedFilter.h" />
+    <ClInclude Include="Image_blur.h" />
+    <ClInclude Include="Image_ColorTemperature.h" />
+    <ClInclude Include="Image_contras.h" />
+    <ClInclude Include="Image_exposure.h" />
+    <ClInclude Include="Image_Histogram.h" />
+    <ClInclude Include="Image_HSL.h" />
+    <ClInclude Include="Image_opencv.h" />
+    <ClInclude Include="Image_Removal.h" />
+    <ClInclude Include="Image_Rotate.h" />
+    <ClInclude Include="Image_sharpening.h" />
+    <ClInclude Include="Image_whitebalance.h" />
+    <QtMoc Include="Qt_curve.h" />
+    <QtMoc Include="Image_Rotate_ui.h" />
+    <QtMoc Include="Image_Removal_ui.h" />
+    <QtMoc Include="Image_processing.h" />
+    <QtMoc Include="Image_curve2.h" />
+    <QtMoc Include="Image_curve1.h" />
+    <QtMoc Include="Image_crop.h" />
+    <QtMoc Include="Image_brightAcontras.h" />
+    <QtMoc Include="CurveChartView.h" />
+    <ClInclude Include="Curve_Spline.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
