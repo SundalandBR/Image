@@ -76,7 +76,7 @@ spline_point spline(vector<pair<int, int>> s) {
 		coe[i].c1 = d[i] - (h[i] / 6) * (2 * m[i] + m[i + 1]);
 		coe[i].d0 = point[i].second;
 	}
-	delete h;
+	delete[] h;
 
 	spline_point spoint;
 	spoint.cnt = n + 1;
@@ -92,7 +92,7 @@ spline_point spline(vector<pair<int, int>> s) {
 */
 double spline_Coordinate(int x, _spline_point spline_point) {
 	int num = 0;
-	int xi;
+	int xi = 0;
 	for (num; num < spline_point.cnt - 1; num++) {
 		if (x <= spline_point.point[num + 1].first && x >= spline_point.point[num].first) {
 			xi = spline_point.point[num].first;

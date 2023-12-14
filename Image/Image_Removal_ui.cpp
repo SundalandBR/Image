@@ -16,12 +16,12 @@ Image_Removal_ui::Image_Removal_ui(QWidget *parent)
 
 	ui.reg_silder->setDisabled(true);
 	ui.reg_spinbox->setDisabled(true);
-	ui.gdredius_silder->setDisabled(true);
-	ui.gdredius_spinbox->setDisabled(true);
+	ui.gdradius_silder->setDisabled(true);
+	ui.gdradius_spinbox->setDisabled(true);
 
-	connect(ui.redius_slider, SIGNAL(valueChanged(int)), ui.redius_spinbox, SLOT(setValue(int)), Qt::UniqueConnection);
-	connect(ui.redius_spinbox, SIGNAL(valueChanged(int)), ui.redius_slider, SLOT(setValue(int)), Qt::UniqueConnection);
-	connect(ui.redius_slider, SIGNAL(valueChanged(int)), this,SLOT(send_removal_val_from_ui()), Qt::UniqueConnection);
+	connect(ui.radius_slider, SIGNAL(valueChanged(int)), ui.radius_spinbox, SLOT(setValue(int)), Qt::UniqueConnection);
+	connect(ui.radius_spinbox, SIGNAL(valueChanged(int)), ui.radius_slider, SLOT(setValue(int)), Qt::UniqueConnection);
+	connect(ui.radius_slider, SIGNAL(valueChanged(int)), this,SLOT(send_removal_val_from_ui()), Qt::UniqueConnection);
 
 	connect(ui.omega_slider, SIGNAL(valueChanged(int)), ui.omega_spinbox, SLOT(setValue(int)), Qt::UniqueConnection);
 	connect(ui.omega_spinbox, SIGNAL(valueChanged(int)), ui.omega_slider, SLOT(setValue(int)), Qt::UniqueConnection);
@@ -30,9 +30,9 @@ Image_Removal_ui::Image_Removal_ui(QWidget *parent)
 	connect(ui.GD_cbox, SIGNAL(clicked()), this, SLOT(open_gdval()), Qt::UniqueConnection);
 	connect(ui.GD_cbox, SIGNAL(clicked()), this, SLOT(send_removal_val_from_ui()), Qt::UniqueConnection);
 
-	connect(ui.gdredius_silder, SIGNAL(valueChanged(int)), ui.gdredius_spinbox, SLOT(setValue(int)), Qt::UniqueConnection);
-	connect(ui.gdredius_spinbox, SIGNAL(valueChanged(int)), ui.gdredius_silder, SLOT(setValue(int)), Qt::UniqueConnection);
-	connect(ui.gdredius_silder, SIGNAL(valueChanged(int)), this, SLOT(send_removal_val_from_ui()), Qt::UniqueConnection);
+	connect(ui.gdradius_silder, SIGNAL(valueChanged(int)), ui.gdradius_spinbox, SLOT(setValue(int)), Qt::UniqueConnection);
+	connect(ui.gdradius_spinbox, SIGNAL(valueChanged(int)), ui.gdradius_silder, SLOT(setValue(int)), Qt::UniqueConnection);
+	connect(ui.gdradius_silder, SIGNAL(valueChanged(int)), this, SLOT(send_removal_val_from_ui()), Qt::UniqueConnection);
 
 	connect(ui.reg_silder, SIGNAL(valueChanged(int)), ui.reg_spinbox, SLOT(setValue(int)), Qt::UniqueConnection);
 	connect(ui.reg_spinbox, SIGNAL(valueChanged(int)), ui.reg_silder, SLOT(setValue(int)), Qt::UniqueConnection);
@@ -71,29 +71,29 @@ void Image_Removal_ui::paintEvent(QPaintEvent* event) {
 }
 
 
-void Image_Removal_ui::IMAGE_REMOVAL(int redius,double omega,bool GD,int G_redius,double reg,double t0) {
+void Image_Removal_ui::IMAGE_REMOVAL(int radius,double omega,bool GD,int G_radius,double reg,double t0) {
 
-	cv::Mat output = Imgae_Removal(Input, redius, omega, GD, G_redius, reg, t0);
+	cv::Mat output = Imgae_Removal(Input, radius, omega, GD, G_radius, reg, t0);
 	removal_mat = output;
 	this->update();
 }
 
 
 void Image_Removal_ui::send_removal_val_from_ui() {
-	int redius = int(ui.redius_slider->value());
+	int radius = int(ui.radius_slider->value());
 	double omega = (double)(ui.omega_slider->value())/100.0;
 	bool GD = ui.GD_cbox->isChecked();
-	int G_redius = int(ui.gdredius_silder->value());
+	int G_radius = int(ui.gdradius_silder->value());
 	double reg = (double)(ui.reg_silder->value()) / 10;
 	double t0 = (double)(ui.t0_silder->value())/10.0;
-	qDebug() << redius << omega << GD << G_redius << reg << t0;
-	emit send_removal_val(redius, omega, GD, G_redius, reg*reg, t0);
+	qDebug() << radius << omega << GD << G_radius << reg << t0;
+	emit send_removal_val(radius, omega, GD, G_radius, reg*reg, t0);
 }
 
 void Image_Removal_ui::open_gdval() {
 	bool gd = ui.GD_cbox->isChecked();
 	ui.reg_silder->setDisabled(!gd);
 	ui.reg_spinbox->setDisabled(!gd);
-	ui.gdredius_silder->setDisabled(!gd);
-	ui.gdredius_spinbox->setDisabled(!gd);
+	ui.gdradius_silder->setDisabled(!gd);
+	ui.gdradius_spinbox->setDisabled(!gd);
 }

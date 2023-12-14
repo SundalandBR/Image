@@ -6,11 +6,11 @@ extern int col;
 
 
 
-// 导向图I 类型为<uchar>，滤波图p 类型为<uchar>,redius 滤波半径，reg 正则化参数
-cv::Mat GuideFilter(cv::Mat I,cv::Mat p,int redius,double reg) {
+// 导向图I 类型为<uchar>，滤波图p 类型为<uchar>,radius 滤波半径，reg 正则化参数
+cv::Mat GuideFilter(cv::Mat I,cv::Mat p,int radius,double reg) {
 
 	//滤波窗口大小
-	int WSIZE = 2 * redius + 1;
+	int WSIZE = 2 * radius + 1;
 
 	//数据类型转化
 	//浮点数表示的颜色的数值在[0,1]之间

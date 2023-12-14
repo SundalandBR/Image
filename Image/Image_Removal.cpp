@@ -40,7 +40,7 @@ static double** GetMinChannel(cv::Mat M) {
 
 
 //获取半径为r的窗口内的最小值，用于求取暗通道
-static cv::Mat GetDarkChannel(const cv::Mat M, const int redius, double** MinChannel) {
+static cv::Mat GetDarkChannel(const cv::Mat M, const int radius, double** MinChannel) {
 
     double** DarkChannel = new double* [row];
     for (int i = 0; i < row; i++) {
@@ -49,12 +49,12 @@ static cv::Mat GetDarkChannel(const cv::Mat M, const int redius, double** MinCha
     }
 
     //计算缓冲区大小，缓冲区一次只读入一行或一列
-    const int row_buffer = 2 * redius + row;
-    const int col_buffer = 2 * redius + col;
+    const int row_buffer = 2 * radius + row;
+    const int col_buffer = 2 * radius + col;
     const int buffer_size = max(row_buffer, col_buffer);
 
     //计算一行或一列分几段
-    const int segment_size = 2 * redius + 1;
+    const int segment_size = 2 * radius + 1;
     const int segment_count = (buffer_size + segment_size - 1) / segment_size;
 
     //防止缓冲区溢出
@@ -73,7 +73,7 @@ static cv::Mat GetDarkChannel(const cv::Mat M, const int redius, double** MinCha
     for (int i = 0; i < row; i++) {
 
         //将每一行都复制到缓冲区
-        std::memcpy(buffer + redius, MinChannel[i], sizeof(double) * col);
+        std::memcpy(buffer + radius, MinChannel[i], sizeof(double) * col);
 
         //计算前缀最小值
         for (int s = 0; s < segment_count; s++) {
@@ -98,9 +98,9 @@ static cv::Mat GetDarkChannel(const cv::Mat M, const int redius, double** MinCha
         }
 
         //计算暗通道
-        for (int j = redius; j < redius + col; j++) {
+        for (int j = radius; j < radius + col; j++) {
 
-            DarkChannel[i][j - redius] = min(forward[j + redius], backward[j - redius]);
+            DarkChannel[i][j - radius] = min(forward[j + radius], backward[j - radius]);
 
         }
 
@@ -110,7 +110,7 @@ static cv::Mat GetDarkChannel(const cv::Mat M, const int redius, double** MinCha
 
         //将每一列都复制到缓冲区
         for (int k = 0; k < row; k++) {
-            std::memcpy(buffer + redius + k, DarkChannel[k] + i, sizeof(double));
+            std::memcpy(buffer + radius + k, DarkChannel[k] + i, sizeof(double));
         }
 
         //计算前缀最小值
@@ -136,8 +136,8 @@ static cv::Mat GetDarkChannel(const cv::Mat M, const int redius, double** MinCha
         }
 
         //在计算完行暗通道的基础上计算列暗通道
-        for (int j = redius; j < redius + row; j++) {
-            DarkChannel[j - redius][i] = min(forward[j + redius], backward[j - redius]);
+        for (int j = radius; j < radius + row; j++) {
+            DarkChannel[j - radius][i] = min(forward[j + radius], backward[j - radius]);
         }
     }
 
@@ -199,7 +199,7 @@ static double* Get_atmospheric_light(cv::Mat Input, cv::Mat DarkChannel) {
 }
 
 //获取透射率
-static cv::Mat Get_transmission(cv::Mat Input, cv::Mat DarkChannel, double omege, double* atmospheric_light,int redius) {
+static cv::Mat Get_transmission(cv::Mat Input, cv::Mat DarkChannel, double omege, double* atmospheric_light,int radius) {
 
     // 初始化通道矩阵
     double** Transmission_Channel = new double* [row];
@@ -220,7 +220,7 @@ static cv::Mat Get_transmission(cv::Mat Input, cv::Mat DarkChannel, double omege
     }
 
     cv::Mat transmission;
-    transmission = GetDarkChannel(Input, redius, Transmission_Channel);
+    transmission = GetDarkChannel(Input, radius, Transmission_Channel);
 
     // 1 - min(min(input / atmospheric_light))
     cv::Mat t;
@@ -288,13 +288,13 @@ static cv::Mat Haze_Removal(cv::Mat Input, double* a, cv::Mat t, double t0) {
 
 
 //暗通道先验去雾
-cv::Mat Imgae_Removal(cv::Mat Input, int redius, double omege, bool GuideFilterFORt, int Guidefilter_redius, double reg, double t0) {
+cv::Mat Imgae_Removal(cv::Mat Input, int radius, double omege, bool GuideFilterFORt, int Guidefilter_radius, double reg, double t0) {
     /*
     * Input 输入图
-    * redius 暗通道滤波半径
+    * radius 暗通道滤波半径
     * omega 去雾程度
     * GuideFilterFORt 是否对透射率图进行导向滤波
-    * Guidefilter_redius 导向滤波半径
+    * Guidefilter_radius 导向滤波半径
     * reg 导向滤波正则化
     * t0 最小雾的传输率
     */
@@ -315,7 +315,7 @@ cv::Mat Imgae_Removal(cv::Mat Input, int redius, double omege, bool GuideFilterF
     double** Minchannel = GetMinChannel(Input);
 
     //暗通道图
-    cv::Mat DarkChannel = GetDarkChannel(Input, redius, Minchannel);
+    cv::Mat DarkChannel = GetDarkChannel(Input, radius, Minchannel);
     
     //释放Minchannel内存
     for (int i = 0; i < row; i++) {
@@ -331,7 +331,7 @@ cv::Mat Imgae_Removal(cv::Mat Input, int redius, double omege, bool GuideFilterF
     printf("\n");
 
     //透射率图	
-    cv::Mat t = Get_transmission(Input, DarkChannel, omege, atmospheric_light,redius);
+    cv::Mat t = Get_transmission(Input, DarkChannel, omege, atmospheric_light,radius);
 
     t.convertTo(P, CV_8U, 255);
     //cv::imshow("transmission", P);
@@ -341,7 +341,7 @@ cv::Mat Imgae_Removal(cv::Mat Input, int redius, double omege, bool GuideFilterF
     {
         // Get_transmission()函数得到的透射率图是double类型，将其转化为无符号整数类型
         t.convertTo(t, CV_8U, 255);
-        t = GuideFilter(I, t, Guidefilter_redius, reg);
+        t = GuideFilter(I, t, Guidefilter_radius, reg);
 
         t.convertTo(P, CV_8U, 255);
         //cv::imshow("transmission_G", P);

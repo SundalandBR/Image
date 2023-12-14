@@ -58,8 +58,8 @@ QTabBar::tab:selected, QTabBar::tab:hover {
    border-color:rgb(115, 115, 115);
    margin-left: 0px;
    margin-right: 0px;
-   border-bottom-right-redius:4px;
-   border-bottom-left-redius:4px;
+   border-bottom-right-radius:4px;
+   border-bottom-left-radius:4px;
 }
 
 QTabBar::tab:last:selected {
@@ -199,7 +199,7 @@ QMenu::item:selected {
     <property name="geometry">
      <rect>
       <x>400</x>
-      <y>20</y>
+      <y>30</y>
       <width>941</width>
       <height>751</height>
      </rect>
@@ -227,7 +227,7 @@ QMenu::item:selected {
      <string notr="true">background-color: rgb(115, 115, 115);</string>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="light_tab">
      <property name="acceptDrops">
@@ -236,41 +236,288 @@ QMenu::item:selected {
      <attribute name="title">
       <string> 亮度/对比度  </string>
      </attribute>
+     <widget class="QWidget" name="layoutWidget_9">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>120</y>
+        <width>291</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_11">
+       <item>
+        <widget class="QSlider" name="sharpening_slider_10">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="sharpening_spinbox_10"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>40</y>
+        <width>291</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QSlider" name="sharpening_slider_2">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="sharpening_spinbox_2"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget_8">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>80</y>
+        <width>291</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_10">
+       <item>
+        <widget class="QSlider" name="sharpening_slider_9">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="sharpening_spinbox_9"/>
+       </item>
+      </layout>
+     </widget>
     </widget>
     <widget class="QWidget" name="exposure_tab">
      <attribute name="title">
       <string> 曝光 </string>
      </attribute>
+     <widget class="QWidget" name="layoutWidget_7">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>80</y>
+        <width>291</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_9">
+       <item>
+        <widget class="QSlider" name="sharpening_slider_8">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="sharpening_spinbox_8"/>
+       </item>
+      </layout>
+     </widget>
     </widget>
     <widget class="QWidget" name="whitebalance_tab">
      <attribute name="title">
       <string> 光感 </string>
      </attribute>
+     <widget class="QWidget" name="layoutWidget_6">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>90</y>
+        <width>291</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_8">
+       <item>
+        <widget class="QSlider" name="sharpening_slider_7">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="sharpening_spinbox_7"/>
+       </item>
+      </layout>
+     </widget>
     </widget>
     <widget class="QWidget" name="colort_tab">
      <attribute name="title">
       <string> 色温 </string>
      </attribute>
+     <widget class="QWidget" name="layoutWidget_5">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>90</y>
+        <width>291</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item>
+        <widget class="QSlider" name="sharpening_slider_5">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="sharpening_spinbox_5"/>
+       </item>
+      </layout>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_8">
      <attribute name="title">
       <string> 色调 </string>
      </attribute>
+     <widget class="QWidget" name="layoutWidget_4">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>90</y>
+        <width>291</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <item>
+        <widget class="QSlider" name="sharpening_slider_4">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="sharpening_spinbox_4"/>
+       </item>
+      </layout>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_9">
      <attribute name="title">
       <string> 饱和度 </string>
      </attribute>
+     <widget class="QWidget" name="layoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>100</y>
+        <width>291</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QSlider" name="sharpening_slider_3">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="sharpening_spinbox_3"/>
+       </item>
+      </layout>
+     </widget>
     </widget>
-    <widget class="QWidget" name="tab_6">
+    <widget class="QWidget" name="sharpening_tab">
      <attribute name="title">
       <string> 锐化 </string>
      </attribute>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>100</y>
+        <width>291</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QSlider" name="sharpening_slider">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="sharpening_spinbox"/>
+       </item>
+      </layout>
+     </widget>
     </widget>
-    <widget class="QWidget" name="tab_10">
+    <widget class="QWidget" name="clur_tab">
      <attribute name="title">
       <string> 平滑 </string>
      </attribute>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>90</y>
+        <width>281</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QSlider" name="clur_slider">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="clur_spinbox"/>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </widget>
    <widget class="QPushButton" name="B_and_C_button">
@@ -305,8 +552,8 @@ QMenu::item:selected {
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>290</y>
+      <x>20</x>
+      <y>440</y>
       <width>151</width>
       <height>181</height>
      </rect>
@@ -341,9 +588,9 @@ QMenu::item:selected {
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>290</y>
-      <width>151</width>
+      <x>180</x>
+      <y>440</y>
+      <width>191</width>
       <height>181</height>
      </rect>
     </property>

@@ -21,14 +21,14 @@ private:
 	virtual void paintEvent(QPaintEvent* event) override;
 
 private slots:
-	void IMAGE_REMOVAL(int redius, double omega, bool GD, int G_redius, double reg, double t0);
+	void IMAGE_REMOVAL(int radius, double omega, bool GD, int G_radius, double reg, double t0);
 	void on_enter_button_clicked();
 	void send_removal_val_from_ui();
 	void open_gdval();
 
 signals:
 	void send_removal_mat(cv::Mat Output);
-	void send_removal_val(int redius, double omega, bool GD, int G_redius, double reg, double t0);
+	void send_removal_val(int radius, double omega, bool GD, int G_radius, double reg, double t0);
 
 
 

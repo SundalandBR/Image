@@ -261,7 +261,7 @@ background-color: rgb(255, 255, 127);</string>
            <number>0</number>
           </property>
           <item alignment="Qt::AlignHCenter">
-           <widget class="QLabel" name="redius_label">
+           <widget class="QLabel" name="radius_label">
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;滤波半径&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
@@ -289,7 +289,7 @@ background-color: rgb(255, 255, 127);</string>
            <number>0</number>
           </property>
           <item>
-           <widget class="QSlider" name="redius_slider">
+           <widget class="QSlider" name="radius_slider">
             <property name="styleSheet">
              <string notr="true">QSlider::groove:horizontal {
         height: 6px;
@@ -425,7 +425,7 @@ QSlider::handle:horizontal {
            <number>0</number>
           </property>
           <item>
-           <widget class="QSpinBox" name="redius_spinbox">
+           <widget class="QSpinBox" name="radius_spinbox">
             <property name="styleSheet">
              <string notr="true">
 color: rgb(255, 255, 255);
@@ -512,7 +512,7 @@ color: rgb(255, 255, 255);</string>
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item alignment="Qt::AlignHCenter">
-           <widget class="QLabel" name="gdredius_label">
+           <widget class="QLabel" name="gdradius_label">
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;导向滤波半径&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
@@ -533,7 +533,7 @@ color: rgb(255, 255, 255);</string>
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>
-           <widget class="QSlider" name="gdredius_silder">
+           <widget class="QSlider" name="gdradius_silder">
             <property name="styleSheet">
              <string notr="true">QSlider::groove:horizontal {
         height: 6px;
@@ -623,7 +623,7 @@ QSlider::handle:horizontal {
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_6">
           <item>
-           <widget class="QSpinBox" name="gdredius_spinbox">
+           <widget class="QSpinBox" name="gdradius_spinbox">
             <property name="styleSheet">
              <string notr="true">
 color: rgb(255, 255, 255);</string>

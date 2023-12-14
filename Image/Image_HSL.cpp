@@ -1,23 +1,3 @@
-
-
-/*
-* 
-* 
-* 
-*/
-
-
-typedef enum base_color {
-	RED,
-	YELLOW,
-	GREEN,
-	BULEGREEN, 
-	BULE,
-	MEGENTA, 
-}basecolor;
-
-
-
 #include "Image_HSL.h"
 #define vmax(r,g,b)  ((r > g ? r : g) > b ?  (r > g ? r : g) : b)
 #define vmin(r,g,b)  ((r < g ? r : g) < b ?  (r < g ? r : g) : b)
@@ -146,7 +126,6 @@ void channel_hsl(hsl **hsl,int offset,basecolor base_color_n,int rows,int cols) 
 * offset 色调调节量 [-100,100]
 * 色相与亮度以4/3的比例增长 
 * 色相范围[-30,30] 亮度范围[0,255]
-* 
 */
 void HUE(hsl** hsl,int offset, int rows, int cols) {
 	int n = round(25 * offset / 100.f);
@@ -167,4 +146,27 @@ void HUE(hsl** hsl,int offset, int rows, int cols) {
 			hsl[i][j].l = hsl_table[l][1] / 255.f;
 		}
 	}
+}
+
+
+void Image_HSL(InputArray src,OutputArray dst,int offset, basecolor channel) {
+	Mat _src = src.getMat();
+	dst.create(src.size(), src.type());
+	Mat _dst = dst.getMat();
+	one_pixel_hsl** hsl;
+	/*或许我真应该调库的*/
+	hsl = RGB2HSL(src);
+	channel_hsl(hsl, offset, channel, _src.rows, _src.cols);
+	HSL2RGB(_src, _dst, hsl);
+}
+
+void Image_HUE(InputArray src, OutputArray dst, int offset) {
+	Mat _src = src.getMat();
+	dst.create(src.size(), src.type());
+	Mat _dst = dst.getMat();
+	one_pixel_hsl** hsl;
+	/*或许我真应该调库的 * 2*/
+	hsl = RGB2HSL(src);
+	HUE(hsl, offset,_src.rows, _src.cols);
+	HSL2RGB(_src, _dst, hsl);
 }

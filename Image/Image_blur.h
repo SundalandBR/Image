@@ -3,4 +3,4 @@
 #include "GuidedFilter.h"
 
 
-void Image_blur(cv::InputArray src, cv::OutputArray dst, double redius, double reg);
+void Image_blur(cv::InputArray src, cv::OutputArray dst, double radius, double reg);
