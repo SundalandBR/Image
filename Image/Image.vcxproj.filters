@@ -109,6 +109,36 @@
     <ClCompile Include="Curve_Spline.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="gamma.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="exposure.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Color_t.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HUE.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="saturation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sharpening.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blur.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HSL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Histogram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Qt_blur.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Image_brightAcontras.ui">
@@ -133,6 +163,36 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="Image_processing.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="gamma.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="exposure.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Color_t.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="HUE.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="saturation.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="sharpening.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="blur.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="HSL.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Histogram.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Qt_blur.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -168,6 +228,36 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="Qt_curve.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="gamma.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="exposure.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Color_t.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="HUE.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="saturation.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="sharpening.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="blur.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="HSL.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Histogram.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Qt_blur.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

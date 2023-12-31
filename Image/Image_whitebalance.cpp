@@ -2,12 +2,12 @@
 
 #include "Image_whitebalance.h"
 
-void whilepatch(InputArray src, OutputArray dst, int percent) {
+void whilepatch(cv::InputArray src, cv::OutputArray dst, int percent) {
 	double per = percent / 100.f;
-	Mat _src = src.getMat();
+	cv::Mat _src = src.getMat();
 	dst.create(src.size(), src.type());
-	Mat _dst = dst.getMat();
-	vector<Mat> p, q;
+	cv::Mat _dst = dst.getMat();
+	vector<cv::Mat> p, q;
 	split(_src, p);
 	vector<double> max_pixel;
 	double max_val;
@@ -20,10 +20,10 @@ void whilepatch(InputArray src, OutputArray dst, int percent) {
 
 	for (int i = 0; i < _src.rows; i++) {
 		for (int j = 0; j < _src.cols; j++) {
-			Vec3b point = _src.at<Vec3b>(i, j);
-			_dst.at<Vec3b>(i, j)[0] = saturate_cast<uchar>(per * (max_pixel[0] - 1.f) * point[0] + point[0]);
-			_dst.at<Vec3b>(i, j)[1] = saturate_cast<uchar>(per * (max_pixel[1] - 1.f) * point[1] + point[1]);
-			_dst.at<Vec3b>(i, j)[2] = saturate_cast<uchar>(per * (max_pixel[2] - 1.f) * point[2] + point[2]);
+			cv::Vec3b point = _src.at<cv::Vec3b>(i, j);
+			_dst.at<cv::Vec3b>(i, j)[0] = cv::saturate_cast<uchar>(per * (max_pixel[0] - 1.f) * point[0] + point[0]);
+			_dst.at<cv::Vec3b>(i, j)[1] = cv::saturate_cast<uchar>(per * (max_pixel[1] - 1.f) * point[1] + point[1]);
+			_dst.at<cv::Vec3b>(i, j)[2] = cv::saturate_cast<uchar>(per * (max_pixel[2] - 1.f) * point[2] + point[2]);
 		}
 	}
 }

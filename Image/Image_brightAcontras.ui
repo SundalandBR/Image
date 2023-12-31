@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>866</width>
-    <height>600</height>
+    <width>370</width>
+    <height>132</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,13 +22,13 @@ Last updated: 24/05/2018, 17:12.
 Available at: https://github.com/GTRONICK/QSS/blob/master/ConsoleStyle.qss
 */
 QWidget {
-	background-color:rgb(0, 0, 0);
+	background-color:rgb(83, 83, 83);
 	color: rgb(240, 240, 240);
 	border-color: rgb(58, 58, 58);
 }
 
 QPlainTextEdit {
-	background-color:rgb(0, 0, 0);
+	background-color:rgb(83, 83, 83);
 	color: rgb(200, 200, 200);
 	selection-background-color: rgb(255, 153, 0);
 	selection-color: rgb(0, 0, 0);
@@ -39,23 +39,23 @@ QTabWidget::pane {
 }
 
 QTabBar::tab {
- 	background-color:rgb(0, 0, 0);
+ 	background-color:rgb(66,66,66);
  	border-style: outset;
-	border-width: 1px;
-	border-right-color: qlineargradient(spread:pad, x1:0.4, y1:0.5, x2:0.6, y2:0.5, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));
-	border-left-color: qlineargradient(spread:pad, x1:0.6, y1:0.5, x2:0.4, y2:0.5, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));
-  border-bottom-color: rgb(58, 58, 58);
-	border-bottom-width: 1px;
+	border-width: 0px;
+	border-right-color: qlineargradient(spread:pad, x1:0.4, y1:0.5, x2:0.6, y2:0.5, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(66,66,66 255));
+	border-left-color: qlineargradient(spread:pad, x1:0.6, y1:0.5, x2:0.4, y2:0.5, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(66,66,66 255));
+    	border-bottom-color: rgb(58, 58, 58);
+	border-bottom-width:0 px;
 	border-top-width: 0px;
 	border-style: solid;
-	color: rgb(255, 153, 0);
+	color: rgb(255,255,255);
 	padding: 4px;
 }
 
 QTabBar::tab:selected, QTabBar::tab:hover {
-   color: rgb(255, 255, 255);
-   background-color:rgb(0, 0, 0);
-   border-color:rgb(42, 42, 42);
+   color: rgb(255,255,255);
+   background-color:rgb(115, 115, 115);
+   border-color:rgb(115, 115, 115);
    margin-left: 0px;
    margin-right: 0px;
    border-bottom-right-radius:4px;
@@ -63,8 +63,8 @@ QTabBar::tab:selected, QTabBar::tab:hover {
 }
 
 QTabBar::tab:last:selected {
-  background-color:rgb(0, 0, 0);
-	border-color:rgb(42, 42, 42);
+  	background-color:rgb(83, 83, 83);
+	border-color:rgb(255,255, 255);
 	margin-left: 0px;
   	margin-right: 0px;
 	border-bottom-right-radius:4px;
@@ -72,18 +72,16 @@ QTabBar::tab:last:selected {
 }
 
 QTabBar::tab:!selected {
-   margin-bottom: 4px;
-   border-bottom-right-radius:4px;
-   border-bottom-left-radius:4px;
+   margin-bottom: 0px;
 }
 
 QPushButton{
 	border-style: outset;
 	border-width: 2px;
-	border-top-color: qlineargradient(spread:pad, x1:0.5, y1:0.6, x2:0.5, y2:0.4, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));
-	border-right-color: qlineargradient(spread:pad, x1:0.4, y1:0.5, x2:0.6, y2:0.5, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));
-	border-left-color: qlineargradient(spread:pad, x1:0.6, y1:0.5, x2:0.4, y2:0.5, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));
-	border-bottom-color: rgb(58, 58, 58);
+	border-top-color: qlineargradient(spread:pad, x1:0.5, y1:0.6, x2:0.5, y2:0.4, stop:0 rgb(83, 83, 83), stop:1 rgba(62, 62, 62, 255));
+	border-right-color: qlineargradient(spread:pad, x1:0.4, y1:0.5, x2:0.6, y2:0.5, stop:0 rgb(83, 83, 83), stop:1 rgba(62, 62, 62, 255));
+	border-left-color: qlineargradient(spread:pad, x1:0.6, y1:0.5, x2:0.4, y2:0.5, stop:0 rgb(83, 83, 83), stop:1 rgba(62, 62, 62, 255));
+	border-bottom-color: rgb(56, 56, 56);
 	border-bottom-width: 1px;
 	border-style: solid;
 	color: rgb(255, 255, 255);
@@ -159,7 +157,7 @@ QProgressBar::chunk {
 }
 
 QMenuBar {
-	background:rgb(0, 0, 0);
+	background:rgb(83,83,83);
 	color: rgb(255,255, 255);
 }
 
@@ -197,58 +195,53 @@ QMenu::item:selected {
 }</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout_6" stretch="7,2,1">
+   <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="8,2">
     <item>
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <property name="spacing">
-       <number>0</number>
-      </property>
-      <property name="leftMargin">
-       <number>50</number>
-      </property>
-      <property name="rightMargin">
-       <number>50</number>
-      </property>
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout_5">
-        <item>
-         <widget class="QLabel" name="radius_label">
-          <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;亮度&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="radius_label_3">
-          <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;对比度&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="radius_label_4">
-          <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;伽马&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
        <layout class="QVBoxLayout" name="verticalLayout">
-        <property name="leftMargin">
-         <number>10</number>
-        </property>
-        <property name="rightMargin">
-         <number>10</number>
-        </property>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QLabel" name="radius_label">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:700; color:#ffffff;&quot;&gt;亮度:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="bright_spinbox">
+            <property name="styleSheet">
+             <string notr="true">
+color: rgb(255, 255, 255);
+</string>
+            </property>
+            <property name="minimum">
+             <number>-100</number>
+            </property>
+            <property name="maximum">
+             <number>100</number>
+            </property>
+            <property name="value">
+             <number>0</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
         <item>
          <widget class="QSlider" name="bright_slider">
           <property name="styleSheet">
@@ -291,6 +284,52 @@ QSlider::handle:horizontal {
            <enum>QSlider::TicksAbove</enum>
           </property>
          </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QLabel" name="radius_label_3">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:700; color:#ffffff;&quot;&gt;对比度:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="constras_spinbox">
+            <property name="styleSheet">
+             <string notr="true">
+color: rgb(255, 255, 255);
+</string>
+            </property>
+            <property name="minimum">
+             <number>-100</number>
+            </property>
+            <property name="maximum">
+             <number>100</number>
+            </property>
+            <property name="value">
+             <number>0</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
         <item>
          <widget class="QSlider" name="constras_slider">
@@ -335,119 +374,38 @@ QSlider::handle:horizontal {
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QSlider" name="gamma_slider">
-          <property name="styleSheet">
-           <string notr="true">QSlider::groove:horizontal {
-        height: 6px;
-        background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(124, 124, 124), stop: 1.0 rgb(72, 71, 71));
-}
-QSlider::handle:horizontal {
-        width: 5px;
-        background: rgb(255, 255, 255);
-        margin: -6px 2px -6px 2px;
-        border-radius: 30px;
-}</string>
-          </property>
-          <property name="minimum">
-           <number>0</number>
-          </property>
-          <property name="maximum">
-           <number>30</number>
-          </property>
-          <property name="pageStep">
-           <number>10</number>
-          </property>
-          <property name="value">
-           <number>10</number>
-          </property>
-          <property name="tracking">
-           <bool>true</bool>
-          </property>
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="invertedAppearance">
-           <bool>false</bool>
-          </property>
-          <property name="invertedControls">
-           <bool>false</bool>
-          </property>
-          <property name="tickPosition">
-           <enum>QSlider::TicksAbove</enum>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
-        <item>
-         <widget class="QSpinBox" name="bright_spinbox">
-          <property name="styleSheet">
-           <string notr="true">
-color: rgb(255, 255, 255);
-</string>
-          </property>
-          <property name="minimum">
-           <number>-100</number>
-          </property>
-          <property name="maximum">
-           <number>100</number>
-          </property>
-          <property name="value">
-           <number>0</number>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QSpinBox" name="constras_spinbox">
-          <property name="styleSheet">
-           <string notr="true">
-color: rgb(255, 255, 255);
-</string>
-          </property>
-          <property name="minimum">
-           <number>-100</number>
-          </property>
-          <property name="maximum">
-           <number>100</number>
-          </property>
-          <property name="value">
-           <number>0</number>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QSpinBox" name="gamma_spinbox">
-          <property name="styleSheet">
-           <string notr="true">
-color: rgb(255, 255, 255);
-</string>
-          </property>
-          <property name="maximum">
-           <number>30</number>
-          </property>
-          <property name="value">
-           <number>10</number>
-          </property>
-         </widget>
-        </item>
        </layout>
       </item>
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <property name="spacing">
-       <number>100</number>
-      </property>
-      <property name="leftMargin">
-       <number>100</number>
-      </property>
-      <property name="rightMargin">
-       <number>100</number>
-      </property>
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <spacer name="verticalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
       <item>
        <widget class="QPushButton" name="enter">
         <property name="text">
@@ -461,6 +419,19 @@ color: rgb(255, 255, 255);
          <string>取消</string>
         </property>
        </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </item>

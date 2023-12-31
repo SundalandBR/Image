@@ -23,6 +23,7 @@ public:
 private:
 	
 	Ui::Image_curve1Class ui;
+	cv::Mat _src;
 	QChart* chart;
 	CurveChartView* chartview;
 	QLineSeries* lineseries;
@@ -54,6 +55,7 @@ private slots:
 	void slotMousePress(bool press);
 	void choose_channel(QString channel);
 	void on_clicked_enterbutton();
+	void on_clicked_exitbutton();
 signals:
 	void signalsendmat(cv::Mat);
 };

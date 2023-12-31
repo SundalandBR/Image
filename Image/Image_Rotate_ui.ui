@@ -207,8 +207,7 @@ QMenu::item:selected {
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(249, 250, 251);
-background-color: rgb(61, 61, 61);</string>
+       <string notr="true"/>
       </property>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>

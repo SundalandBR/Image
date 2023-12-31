@@ -12,7 +12,7 @@ void Image_exposure(cv::InputArray _src, cv::OutputArray _dst, double strength) 
 	uchar* pInputImg = src.data;
 	uchar* pOutputImg = dst.data;
 	int step = src.step;
-
+	strength = 2 * strength / 100.f;
 	for (int i = 0; i < src.rows * step; i++) {
 		pOutputImg[i] = (uchar)min(255, max(0, pInputImg[i] * pow(2, strength)));
 	}

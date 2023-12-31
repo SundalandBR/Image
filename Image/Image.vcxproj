@@ -71,6 +71,9 @@
     <Link>
       <AdditionalDependencies>opencv_world480d.lib;Qt6Chartsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <ClCompile>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
@@ -97,9 +100,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="blur.cpp" />
+    <ClCompile Include="Color_t.cpp" />
     <ClCompile Include="CurveChartView.cpp" />
     <ClCompile Include="Curve_Spline.cpp" />
+    <ClCompile Include="exposure.cpp" />
+    <ClCompile Include="gamma.cpp" />
     <ClCompile Include="GuidedFilter.cpp" />
+    <ClCompile Include="Histogram.cpp" />
+    <ClCompile Include="HSL.cpp" />
+    <ClCompile Include="HUE.cpp" />
     <ClCompile Include="Image_blur.cpp" />
     <ClCompile Include="Image_brightAcontras.cpp" />
     <ClCompile Include="Image_ColorTemperature.cpp" />
@@ -118,9 +128,19 @@
     <ClCompile Include="Image_sharpening.cpp" />
     <ClCompile Include="Image_text.cpp" />
     <ClCompile Include="Image_whitebalance.cpp" />
+    <ClCompile Include="Qt_blur.cpp" />
     <ClCompile Include="Qt_curve.cpp" />
+    <ClCompile Include="saturation.cpp" />
+    <ClCompile Include="sharpening.cpp" />
     <ClCompile Include="ViewLabel.cpp" />
     <QtRcc Include="Image.qrc" />
+    <QtUic Include="blur.ui" />
+    <QtUic Include="Color_t.ui" />
+    <QtUic Include="exposure.ui" />
+    <QtUic Include="gamma.ui" />
+    <QtUic Include="Histogram.ui" />
+    <QtUic Include="HSL.ui" />
+    <QtUic Include="HUE.ui" />
     <QtUic Include="Image.ui" />
     <QtMoc Include="Image.h" />
     <ClCompile Include="Image.cpp" />
@@ -133,6 +153,9 @@
     <QtUic Include="Image_Removal_ui.ui" />
     <QtUic Include="Image_Rotate_ui.ui" />
     <QtUic Include="Image_text.ui" />
+    <QtUic Include="Qt_blur.ui" />
+    <QtUic Include="saturation.ui" />
+    <QtUic Include="sharpening.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ViewLabel.h" />
@@ -141,7 +164,17 @@
     <QtMoc Include="Image_text.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="Qt_blur.h" />
+    <QtMoc Include="sharpening.h" />
+    <QtMoc Include="saturation.h" />
+    <QtMoc Include="gamma.h" />
+    <QtMoc Include="exposure.h" />
+    <QtMoc Include="Color_t.h" />
+    <QtMoc Include="blur.h" />
     <ClInclude Include="GuidedFilter.h" />
+    <QtMoc Include="HUE.h" />
+    <QtMoc Include="HSL.h" />
+    <QtMoc Include="Histogram.h" />
     <ClInclude Include="Image_blur.h" />
     <ClInclude Include="Image_ColorTemperature.h" />
     <ClInclude Include="Image_contras.h" />

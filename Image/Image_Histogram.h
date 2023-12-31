@@ -1,8 +1,8 @@
 #pragma once
 #include "Image_opencv.h"
+#include "qevent.h"
 
 
-using namespace cv;
 static struct _cdf_
 {
 	int array[256];

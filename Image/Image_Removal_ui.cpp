@@ -61,6 +61,7 @@ void Image_Removal_ui::on_enter_button_clicked() {
 
 void Image_Removal_ui::paintEvent(QPaintEvent* event) {
 
+	qDebug() << "1";
 	cv::Mat tmat;
 	removal_mat.copyTo(tmat);
 	cv::cvtColor(tmat, tmat, cv::COLOR_BGR2RGB);

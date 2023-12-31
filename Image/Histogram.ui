@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>HistogramClass</class>
+ <widget class="QWidget" name="HistogramClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1062</width>
+    <height>595</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Histogram</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="9,1">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="ViewLabel" name="org_label">
+       <property name="maximumSize">
+        <size>
+         <width>518</width>
+         <height>512</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>org</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="ViewLabel" name="his_label">
+       <property name="maximumSize">
+        <size>
+         <width>518</width>
+         <height>512</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>histogram</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>确定</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="text">
+        <string>取消</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>ViewLabel</class>
+   <extends>QLabel</extends>
+   <header>Viewlabel.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

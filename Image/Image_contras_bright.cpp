@@ -48,7 +48,7 @@ void Image_contras_gamma(cv::InputArray _src, cv::OutputArray _dst, double gamma
 	*/
 	cv::Mat lookuptable(1, 256, CV_8U);
 	for (int i = 0; i < 256; i++) {
-		lookuptable.at<uchar>(i) = cv::saturate_cast<uchar>(pow(i / 255.0, gamma) * 255.0);
+		lookuptable.at<uchar>(i) = cv::saturate_cast<uchar>(pow(i / 255.0, gamma) * 255.0); 
 	}
 	cv::LUT(_src, lookuptable, _dst);
 }
@@ -57,7 +57,6 @@ void Image_contras_bright(cv::InputArray Input, cv::OutputArray Output, double b
 
 	std::vector<cv::Mat> p, q;
 	cv::split(Input, p);
-
 	for (int i = 0; i < Input.channels(); i++) {
 
 		Image_contras(p[i], p[i], beta, alpha);
@@ -65,3 +64,4 @@ void Image_contras_bright(cv::InputArray Input, cv::OutputArray Output, double b
 	}
 	cv::merge(q, Output);
 }
+

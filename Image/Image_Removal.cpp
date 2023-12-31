@@ -342,7 +342,6 @@ cv::Mat Imgae_Removal(cv::Mat Input, int radius, double omege, bool GuideFilterF
         // Get_transmission()函数得到的透射率图是double类型，将其转化为无符号整数类型
         t.convertTo(t, CV_8U, 255);
         t = GuideFilter(I, t, Guidefilter_radius, reg);
-
         t.convertTo(P, CV_8U, 255);
         //cv::imshow("transmission_G", P);
     }

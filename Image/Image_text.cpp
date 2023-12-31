@@ -1,4 +1,4 @@
-#include "Image_text.h"
+ï»¿#include "Image_text.h"
 
 extern cv::Mat Input;
 static cv::Mat Output;
@@ -10,12 +10,12 @@ Image_text::Image_text(QWidget* parent)
 
     CONSTRUCTED_FUNCTION = true;
 
-    //ÇøÓòÄÚÍâµÈÑÕÉ«Öµ
+    //åŒºåŸŸå†…å¤–ç­‰é¢œè‰²å€¼
     outsideColor_ = QColor(200, 200, 200, 150);
     insideColor_ = QColor(200, 200, 200, 0);
     dashColor_ = QColor(30, 162, 255, 255);
 
-    //¼¸¸ö¿ÉÒÔµ÷ÕûµÄµã
+    //å‡ ä¸ªå¯ä»¥è°ƒæ•´çš„ç‚¹
     labelLeftBottom_ = new QLabel(this);
     labelLeftBottom_->setObjectName(QString::fromUtf8("labelLeftBottom"));
     labelLeftBottom_->setFixedSize(sDragDotWidth_, sDragDotWidth_);
@@ -45,8 +45,9 @@ Image_text::Image_text(QWidget* parent)
     TextEdit_->setObjectName(QString::fromUtf8("textedit"));
     TextEdit_->setStyleSheet(QString::fromUtf8("background-color: rgba(255,255,255,0);"));
 
-    font = QFont("ËÎÌå", 12);
-    TextEdit_->setTextColor(Qt::red);
+    text_color = Qt::black;
+    font = QFont("å®‹ä½“", 4);
+    TextEdit_->setTextColor(text_color);
     TextEdit_->setFont(font);
 
     labeltop_->installEventFilter(this);
@@ -54,11 +55,14 @@ Image_text::Image_text(QWidget* parent)
     labelRightBottom_->installEventFilter(this);
     labelLeftTop_->installEventFilter(this);
     labelRightTop_->installEventFilter(this);
+
     this->update();
     connect(this, SIGNAL(send_ratio(float)), this, SLOT(setFixCenterRectRatio(float)));
-    connect(ui.enter_button, SIGNAL(clicked()), this, SLOT(close()));
-    connect(ui.enter_button, SIGNAL(clicked()), this, SLOT(send_text_mat()));
+    connect(ui.enter_button, SIGNAL(clicked()), this, SLOT(painter_text()));
     connect(ui.exit_button, SIGNAL(clicked()), this, SLOT(close()));
+    connect(ui.color_comboBox, SIGNAL(currentTextChanged(QString)), this, SLOT(color_combox_change(QString)));
+    connect(ui.font_combobox, SIGNAL(currentTextChanged(QString)), this, SLOT(font_combox_change(QString)));
+    connect(ui.size_comboBox, SIGNAL(currentTextChanged(QString)), this, SLOT(size_combox_change(QString)));
 }
 
 
@@ -90,7 +94,7 @@ void Image_text::after_image_text() {
     return;
 }
 
-//ÖĞĞÄ¾ØÕóºÏ·¨ĞÔÅĞ¶Ï
+//ä¸­å¿ƒçŸ©é˜µåˆæ³•æ€§åˆ¤æ–­
 void Image_text::check_centerRect() {
 
     // labelx <= center.x <= labelx + width
@@ -121,7 +125,7 @@ void Image_text::setRects() {
     TextEdit_->move(QPoint(centerRect_.x(), centerRect_.y()));
 }
 
-//update() µ÷ÓÃ
+//update() è°ƒç”¨
 void Image_text::paintEvent(QPaintEvent* event)
 {
 
@@ -144,20 +148,6 @@ void Image_text::paintEvent(QPaintEvent* event)
     labeltop_->move(centerRect_.x() + centerRect_.width() / 2, centerRect_.y() - sDragDotWidth_ /2  );
 }
 
-void Image_text::send_text_mat() {
-    cv::Rect rect(centerRect_.x() - labelX_, centerRect_.y() - labelY_, centerRect_.width(), centerRect_.height());
-    image_text_cv(rect);
-    emit Image_text::send_text_mat(Output);
-}
-
-void Image_text::image_text_cv(cv::Rect rect) {
-    cv::Rect src_rect(0, 0, Input.cols, Input.rows);
-    rect = rect & src_rect;
-    Output.create(cv::Size(rect.width, rect.height), Input.type());
-    Input(rect).copyTo(Output);
-}
-
-
 void Image_text::mousePressEvent(QMouseEvent* e) {
     if (centerRect_.contains(e->pos(), true)) {
         start_pos_ = e->pos();
@@ -170,7 +160,7 @@ void Image_text::mouseMoveEvent(QMouseEvent* e) {
     if (press_) {
         QPoint move_ = e->pos() - start_pos_;
         /*
-        * ÏŞÖÆ²Ã¼ô¿òÔÚlabelÄÚ
+        * é™åˆ¶è£å‰ªæ¡†åœ¨labelå†…
         * label_x <= end_pos_.x <= label_x + width - centerRect.width
         * label_y <= end_pos_.y <= label_y + heigth - centerRect.heigth
         *
@@ -198,8 +188,8 @@ bool Image_text::eventFilter(QObject* obj, QEvent* e) {
         if (e->type() == QEvent::MouseButtonPress) {
             QMouseEvent* event = (QMouseEvent*)e;
             /*
-            * LeftButton ±íÊ¾Êó±ê×ó¼ü°´ÏÂ
-            * NoButton ±íÊ¾Êó±êÔÚÒÆ¶¯
+            * LeftButton è¡¨ç¤ºé¼ æ ‡å·¦é”®æŒ‰ä¸‹
+            * NoButton è¡¨ç¤ºé¼ æ ‡åœ¨ç§»åŠ¨
             */
             if (event->buttons() & Qt::LeftButton || event->buttons() == Qt::NoButton) {
                 button_press = true;
@@ -273,7 +263,7 @@ bool Image_text::eventFilter(QObject* obj, QEvent* e) {
             }
         }
         /*
-        * Êó±êËÉ¿ªÊ±ºò
+        * é¼ æ ‡æ¾å¼€æ—¶å€™
         */
         else if (e->type() & QEvent::MouseButtonRelease) {
             button_press = false;
@@ -282,4 +272,87 @@ bool Image_text::eventFilter(QObject* obj, QEvent* e) {
 
     }
     return QWidget::eventFilter(obj, e);
+}
+
+
+void Image_text::painter_text() {
+    cv::Mat rgbMat;
+    cv::cvtColor(Input, rgbMat, cv::COLOR_BGR2RGB);
+    QImage _pix(rgbMat.data, rgbMat.cols, rgbMat.rows, static_cast<int>(rgbMat.step), QImage::Format_RGB888);
+    QString qstr = this->TextEdit_->toPlainText();
+    QPainter pt(&_pix);
+    QPen pen = QPen();
+    pen.setColor(text_color);
+    pt.setPen(pen);
+    pt.setFont(font);
+    pt.drawText(QRect(centerRect_.x()-labelX_,centerRect_.y()-labelY_,centerRect_.width(),centerRect_.height()), Qt::TextWordWrap | Qt::AlignLeft, qstr);
+    Output = cv::Mat(_pix.height(), _pix.width(), CV_8UC3, _pix.bits(), static_cast<size_t>(_pix.bytesPerLine()));
+    cv::cvtColor(Output, Output, cv::COLOR_BGR2RGB);
+    emit send_text_mat(Output);
+    this->close();
+}
+
+
+void Image_text::color_combox_change(QString str) {
+    QColor color;
+    if (str.compare(QString("é»‘")) == 0) {
+        color = Qt::black;
+    }
+    else if (str.compare(QString("ç™½")) == 0) {
+        color = Qt::white;
+    }
+    else if (str.compare(QString("çº¢")) == 0) {
+        color = Qt::red;
+    }
+    else if (str.compare(QString("è“")) == 0) {
+        color = Qt::blue;
+    }
+    else if (str.compare(QString("é»„")) == 0) {
+        color = Qt::yellow;
+    }
+    else if (str.compare(QString("ç»¿")) == 0){
+        color = Qt::green;
+    }
+    text_color = color;
+
+    QPalette palette = TextEdit_->palette();
+
+    QTextCharFormat format = TextEdit_->currentCharFormat();
+
+    // è®¾ç½®æ–‡æœ¬é¢œè‰²
+    format.setForeground(text_color);
+
+    // å°†æ–°çš„æ–‡æœ¬æ ¼å¼åº”ç”¨åˆ°TextEditä¸­çš„æ‰€æœ‰æ–‡æœ¬
+    TextEdit_->selectAll();
+    TextEdit_->mergeCurrentCharFormat(format);
+
+    TextEdit_->update();
+}
+
+void Image_text::font_combox_change(QString str) {
+    if (str.compare(QString("å®‹ä½“")) == 0) {
+        font.setFamily("å®‹ä½“");
+    }
+    else if (str.compare(QString("é»‘ä½“")) == 0) {
+        font.setFamily("é»‘ä½“");
+    }
+    else if (str.compare(QString("æ¥·ä½“")) == 0) {
+        font.setFamily("æ¥·ä½“");
+    }
+    else {
+        font.setFamily("å¾®è½¯é›…é»‘");
+    }
+    TextEdit_->setFont(font);
+    TextEdit_->update();
+}
+
+void Image_text::size_combox_change(QString str) {
+    int size = str.toInt();
+    font.setPointSize(size);
+    TextEdit_->setFont(font);
+    TextEdit_->update();
+}
+
+void Image_text::change_font() {
+    
 }

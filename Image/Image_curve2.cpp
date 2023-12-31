@@ -10,6 +10,7 @@ Image_curve2::Image_curve2(QWidget* parent)
 {
 	ui.setupUi(this);
 	Input.copyTo(dst);
+	Input.copyTo(_src);
 	cv::cvtColor(dst, dst, cv::COLOR_BGR2HLS);
 
 	in_point = false;
@@ -29,7 +30,7 @@ Image_curve2::Image_curve2(QWidget* parent)
 	connect(chartview, SIGNAL(signalMouseRelease(bool)), this, SLOT(slotMousePress(bool)));
 	connect(ui.comboBox, SIGNAL(currentTextChanged(QString)), this, SLOT(choose_channel(QString)));
 	connect(ui.enter, SIGNAL(clicked()), this, SLOT(on_clicked_enterbutton()));
-	connect(ui.exit, SIGNAL(clicked()), this, SLOT(close()));
+	connect(ui.exit, SIGNAL(clicked()), this, SLOT(on_clicked_exitbutton()));
 	light_line->setUseOpenGL(true);
 	saturation_line->setUseOpenGL(true);
 }
@@ -132,6 +133,8 @@ void Image_curve2::updatedata(QPointF point) {
 	QScatterSeries* old_scatterseries = qobject_cast<QScatterSeries*>(chart->series().at(1));
 	double left = x_index - 1 > 0 ? (*target_data)[x_index - 1].x() : 0.f;
 	double right = x_index < (*target_data).size() - 1 ? (*target_data)[x_index + 1].x() : 255.f;
+	left += 1;
+	right -= 1;
 	left = (point.x() < left ? left : point.x()) < right ? (point.x() < left ? left : point.x()) : right;
 	point.setX((int)left);
 	point.setY((int)point.y());
@@ -160,12 +163,10 @@ void Image_curve2::updateMat() {
 		lookuptable.at<cv::Vec3b>(i)[1] = cv::saturate_cast<uchar>(*(lut_light + i));
 		lookuptable.at<cv::Vec3b>(i)[2] = cv::saturate_cast<uchar>(*(lut_saturation + i));
 	}
-	cv::LUT(Input, lookuptable, dst);
-	
-	cv::Mat show;
-	dst.copyTo(show);
-	cv::cvtColor(show, show, cv::COLOR_HLS2BGR);
-	cv::imshow("Ô¤ÀÀÍ¼", show);
+	cv::LUT(_src, lookuptable, dst);
+	cv::cvtColor(dst, dst, cv::COLOR_HLS2BGR);
+	emit signalsendmat(dst);
+	//cv::imshow("Ô¤ÀÀÍ¼", show);
 
 }
 
@@ -195,4 +196,11 @@ void Image_curve2::choose_channel(QString channel) {
 void Image_curve2::on_clicked_enterbutton() {
 	this->close();
 	emit signalsendmat(dst);
+}
+
+void Image_curve2::on_clicked_exitbutton() {
+
+	//cv::destroyAllWindows();
+	this->close();
+	emit signalsendmat(_src);
 }

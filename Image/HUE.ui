@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Image_processingClass</class>
- <widget class="QMainWindow" name="Image_processingClass">
+ <class>HUEClass</class>
+ <widget class="QWidget" name="HUEClass">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1357</width>
-    <height>798</height>
+    <width>370</width>
+    <height>120</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Image_processing</string>
+   <string>HUE</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">/*
-Dark Console Style Sheet for QT Applications
-Author: Jaime A. Quiroga P.
-Company: GTRONICK
-Last updated: 24/05/2018, 17:12.
-Available at: https://github.com/GTRONICK/QSS/blob/master/ConsoleStyle.qss
-*/
-QWidget {
+   <string notr="true">QWidget {
 	background-color:rgb(83, 83, 83);
 	color: rgb(240, 240, 240);
 	border-color: rgb(58, 58, 58);
@@ -194,219 +187,127 @@ QMenu::item:selected {
 	border-style: inset;
 }</string>
   </property>
-  <widget class="QWidget" name="centralWidget">
-   <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="0,9,0">
-    <item>
-     <spacer name="horizontalSpacer">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
-     <widget class="ViewLabel" name="Photo_label">
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(40, 40, 40);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <spacer name="horizontalSpacer_2">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1357</width>
-     <height>19</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menu">
-    <property name="title">
-     <string>文件</string>
-    </property>
-    <addaction name="open_file_menu"/>
-    <addaction name="save"/>
-   </widget>
-   <widget class="QMenu" name="menu_2">
-    <property name="title">
-     <string>几何变化</string>
-    </property>
-    <addaction name="crop"/>
-    <addaction name="rotate"/>
-    <addaction name="text"/>
-   </widget>
-   <widget class="QMenu" name="menu_3">
-    <property name="title">
-     <string>图像增强</string>
-    </property>
-    <addaction name="gamma"/>
-    <addaction name="light"/>
-    <addaction name="exposure"/>
-    <addaction name="curve2_"/>
-    <addaction name="histogram"/>
-    <addaction name="saturation"/>
-    <addaction name="removal"/>
-   </widget>
-   <widget class="QMenu" name="menu_4">
-    <property name="title">
-     <string>调色</string>
-    </property>
-    <addaction name="curve1_"/>
-    <addaction name="HSL"/>
-    <addaction name="color_t"/>
-    <addaction name="hue"/>
-   </widget>
-   <widget class="QMenu" name="menu_5">
-    <property name="title">
-     <string>图像滤波</string>
-    </property>
-    <addaction name="sharpening"/>
-    <addaction name="blur"/>
-   </widget>
-   <addaction name="menu"/>
-   <addaction name="menu_2"/>
-   <addaction name="menu_3"/>
-   <addaction name="menu_4"/>
-   <addaction name="menu_5"/>
-  </widget>
-  <widget class="QStatusBar" name="statusBar"/>
-  <action name="open_file_menu">
-   <property name="text">
-    <string>打开文件</string>
-   </property>
-  </action>
-  <action name="save">
-   <property name="text">
-    <string>保存</string>
-   </property>
-  </action>
-  <action name="crop">
-   <property name="text">
-    <string>构图</string>
-   </property>
-  </action>
-  <action name="rotate">
-   <property name="text">
-    <string>旋转</string>
-   </property>
-  </action>
-  <action name="action_4">
-   <property name="text">
-    <string>文字</string>
-   </property>
-  </action>
-  <action name="gamma">
-   <property name="text">
-    <string>光感</string>
-   </property>
-  </action>
-  <action name="light">
-   <property name="text">
-    <string>亮度/对比度</string>
-   </property>
-  </action>
-  <action name="exposure">
-   <property name="text">
-    <string>曝光</string>
-   </property>
-  </action>
-  <action name="contrast">
-   <property name="text">
-    <string>对比度</string>
-   </property>
-  </action>
-  <action name="curve2_">
-   <property name="text">
-    <string>曲线调整</string>
-   </property>
-  </action>
-  <action name="histogram">
-   <property name="text">
-    <string>直方图均衡化</string>
-   </property>
-  </action>
-  <action name="saturation">
-   <property name="text">
-    <string>饱和度调整</string>
-   </property>
-  </action>
-  <action name="curve1_">
-   <property name="text">
-    <string>曲线调色</string>
-   </property>
-  </action>
-  <action name="HSL">
-   <property name="text">
-    <string>HSL</string>
-   </property>
-  </action>
-  <action name="sharpening">
-   <property name="text">
-    <string>锐化</string>
-   </property>
-  </action>
-  <action name="blur">
-   <property name="text">
-    <string>平滑</string>
-   </property>
-  </action>
-  <action name="color_t">
-   <property name="text">
-    <string>色温</string>
-   </property>
-  </action>
-  <action name="hue">
-   <property name="text">
-    <string>色调</string>
-   </property>
-  </action>
-  <action name="removal">
-   <property name="text">
-    <string>去雾</string>
-   </property>
-  </action>
-  <action name="text">
-   <property name="text">
-    <string>文字</string>
-   </property>
-  </action>
+  <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="8,2">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <spacer name="verticalSpacer_4">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:700;&quot;&gt;色调：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="hue_spinbox"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QSlider" name="hue_slider">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="minimum">
+        <number>-100</number>
+       </property>
+       <property name="maximum">
+        <number>100</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>确定</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="text">
+        <string>取消</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <customwidgets>
-  <customwidget>
-   <class>ViewLabel</class>
-   <extends>QLabel</extends>
-   <header>viewlabel.h</header>
-  </customwidget>
- </customwidgets>
- <resources>
-  <include location="../../../Image_processing/Image_processing/Image_processing.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

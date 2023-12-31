@@ -8,12 +8,11 @@
 
 
 
+void cdf(cv::InputArray src, cv::OutputArray dst,struct _cdf_ *_CDF) {
 
-void cdf(InputArray src, OutputArray dst,struct _cdf_ *_CDF) {
-
-	Mat _src = src.getMat();
-	Mat_<uchar>::iterator _src_begin = _src.begin<uchar>();
-	Mat_<uchar>::iterator _src_end = _src.end<uchar>();
+	cv::Mat _src = src.getMat();
+	cv::Mat_<uchar>::iterator _src_begin = _src.begin<uchar>();
+	cv::Mat_<uchar>::iterator _src_end = _src.end<uchar>();
 	int grey_pixel[256];
 	memset(_CDF->array, 0, sizeof(_CDF->array));
 	memset(grey_pixel, 0, sizeof(grey_pixel));
@@ -39,25 +38,23 @@ void cdf(InputArray src, OutputArray dst,struct _cdf_ *_CDF) {
 	printf("MAX %d  MIN %d \n", _CDF->MAX_CDF, _CDF->MIN_CDF);
 	for (int i = 0; i < 256; i++) {
 		lookuptable.at<uchar>(i) = round( PIEXL_RANGE((255 * (_CDF->array[i] - _CDF->MIN_CDF) / (_CDF->MAX_CDF - _CDF->MIN_CDF)), 0, 255));
-		printf("%d %d %d\n", i, lookuptable.at<uchar>(i), _CDF->array[i]);
 	}
 	cv::LUT(src, lookuptable, dst);
-	printf("\n\n\n\n");
 	return;
 }
 
 
-void Imgae_Histogram(InputArray src,OutputArray dst) {
+void Imgae_Histogram(cv::InputArray src, cv::OutputArray dst) {
 
 
-	Mat _src = src.getMat();
+	cv::Mat _src = src.getMat();
 	dst.create(_src.size(), _src.type());
-	Mat _dst = dst.getMat();
+	cv::Mat _dst = dst.getMat();
 	std::vector<cv::Mat> p, q;
 	cv::split(_src, p);
 	for (int i = 0; i < _src.channels(); i++) {
 
-		Mat t;
+		cv::Mat t;
 		struct _cdf_* _CDF;
 		_CDF = (struct _cdf_*)malloc(sizeof(struct _cdf_));
 		cdf(p[i],p[i], _CDF);

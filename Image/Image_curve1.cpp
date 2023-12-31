@@ -10,11 +10,9 @@ Image_curve1::Image_curve1(QWidget* parent)
 {
 	ui.setupUi(this);
 	Input.copyTo(dst);
-
+	Input.copyTo(_src);
 	in_point = false;
 	press_ = false;
-
-
 	rgb_line = new QLineSeries();
 	rgb_scatter = new QScatterSeries();
 
@@ -36,7 +34,7 @@ Image_curve1::Image_curve1(QWidget* parent)
 	connect(chartview, SIGNAL(signalMouseRelease(bool)), this, SLOT(slotMousePress(bool)));
 	connect(ui.comboBox, SIGNAL(currentTextChanged(QString)), this, SLOT(choose_channel(QString)));
 	connect(ui.enter, SIGNAL(clicked()), this, SLOT(on_clicked_enterbutton()));
-	connect(ui.exit, SIGNAL(clicked()), this, SLOT(close()));
+	connect(ui.exit, SIGNAL(clicked()), this, SLOT(on_clicked_exitbutton()));
 	rgb_line->setUseOpenGL(true);
 	red_line->setUseOpenGL(true);
 	green_line->setUseOpenGL(true);
@@ -166,6 +164,8 @@ void Image_curve1::updatedata(QPointF point) {
 	QScatterSeries* old_scatterseries = qobject_cast<QScatterSeries*>(chart->series().at(1));
 	double left = x_index - 1 > 0 ? (*target_data)[x_index - 1].x() : 0.f;
 	double right = x_index < (*target_data).size() - 1 ? (*target_data)[x_index + 1].x() : 255.f;
+	left += 1;
+	right -= 1;
 	left = (point.x() < left ? left : point.x()) < right ? (point.x() < left ? left : point.x()) : right;
 	point.setX((int)left);
 	point.setY((int)point.y());
@@ -196,10 +196,9 @@ void Image_curve1::updateMat() {
 		lookuptable.at<cv::Vec3b>(i)[1] = cv::saturate_cast<uchar>(*(lut_g + i));
 		lookuptable.at<cv::Vec3b>(i)[2] = cv::saturate_cast<uchar>(*(lut_r + i));
 	}
-	cv::LUT(Input, lookuptable, dst);
+	cv::LUT(_src, lookuptable, dst);
 	cv::LUT(dst, lookuptable_rgb, dst);
-	cv::imshow("Ô¤ÀÀÍ¼", dst);
-
+	emit signalsendmat(dst);
 }
 
 void Image_curve1::choose_channel(QString channel) {
@@ -241,4 +240,13 @@ void Image_curve1::on_clicked_enterbutton() {
 	//cv::destroyAllWindows();
 	this->close();
 	emit signalsendmat(dst);
+}
+
+
+
+void Image_curve1::on_clicked_exitbutton() {
+
+	//cv::destroyAllWindows();
+	this->close();
+	emit signalsendmat(_src);
 }

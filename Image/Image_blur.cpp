@@ -10,7 +10,7 @@
 */
 void Image_blur(cv::InputArray src, cv::OutputArray dst, double radius, double reg) {
 	/*
-	* edius 导向滤波半径
+	* radius 导向滤波半径
 	* reg 导向滤波正则化参数
 	*/
 	cv::Mat _gray_src;
@@ -22,6 +22,7 @@ void Image_blur(cv::InputArray src, cv::OutputArray dst, double radius, double r
 	split(_src, p);
 	for (int i = 0; i < _src.channels(); i++) {
 		p[i] = GuideFilter(_gray_src, p[i], radius, reg);
+		p[i].convertTo(p[i], CV_8U, 255);
 		q.push_back(p[i]);
 	}
 	merge(q, _dst);

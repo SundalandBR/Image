@@ -9,6 +9,7 @@
 #include "qevent.h"
 #include "qtextedit.h"
 #include "qfont.h"
+#include "qimage.h"
 
 class Image_text : public QMainWindow
 {
@@ -41,9 +42,8 @@ private:
 	QPoint end_pos_;//鼠标移动目的位置
 	QPoint global_start_pos_;//鼠标移动全局起始位置
 	QRect center_move_location_;//中心框起始位置
-
+	QColor text_color;
 	QPixmap pix;
-	QImage _pix;
 
 	bool button_press = false;//是否允许四顶点拖拽
 	bool press_ = false;//是否允许裁剪框拖拽
@@ -76,9 +76,13 @@ private:
 	virtual bool eventFilter(QObject*, QEvent*) override;
 	void setRects();
 	void after_image_text();
-
+	
 private slots:
-	void send_text_mat();
+	void painter_text();
+	void change_font();
+	void color_combox_change(QString str);
+	void size_combox_change(QString str);
+	void font_combox_change(QString str);
 
 signals:
 	void send_ratio(float);
