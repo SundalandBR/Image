@@ -325,10 +325,6 @@ cv::Mat Imgae_Removal(cv::Mat Input, int radius, double omege, bool GuideFilterF
 
     //全局大气光值
     double* atmospheric_light = Get_atmospheric_light(Input, DarkChannel);
-    for (int i = 0; i < Input.channels(); i++) {
-        printf("%lf ", *(atmospheric_light + i));
-    }
-    printf("\n");
 
     //透射率图	
     cv::Mat t = Get_transmission(Input, DarkChannel, omege, atmospheric_light,radius);

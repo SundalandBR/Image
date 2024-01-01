@@ -35,7 +35,6 @@ void cdf(cv::InputArray src, cv::OutputArray dst,struct _cdf_ *_CDF) {
 	}
 
 	cv::Mat lookuptable(1, 256, CV_8U);
-	printf("MAX %d  MIN %d \n", _CDF->MAX_CDF, _CDF->MIN_CDF);
 	for (int i = 0; i < 256; i++) {
 		lookuptable.at<uchar>(i) = round( PIEXL_RANGE((255 * (_CDF->array[i] - _CDF->MIN_CDF) / (_CDF->MAX_CDF - _CDF->MIN_CDF)), 0, 255));
 	}

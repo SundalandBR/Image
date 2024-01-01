@@ -5,7 +5,6 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_Image_processing.h"
 #include "Image_opencv.h"
-#include "Image_HSL.h"
 #include "Image_Removal_ui.h"
 #include "Image_Rotate_ui.h"
 #include "Image_Crop.h"

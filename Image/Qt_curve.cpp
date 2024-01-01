@@ -194,7 +194,6 @@ void Qt_curve::updateMat() {
 	}
 	cv::LUT(Input, lookuptable, dst);
 	cv::LUT(dst, lookuptable_rgb, dst);
-	cv::imshow("‘§¿¿Õº", dst);
 	
 }
 

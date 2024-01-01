@@ -11,6 +11,7 @@ Image_curve2::Image_curve2(QWidget* parent)
 	ui.setupUi(this);
 	Input.copyTo(dst);
 	Input.copyTo(_src);
+	cv::cvtColor(_src, _src, cv::COLOR_BGR2HLS);
 	cv::cvtColor(dst, dst, cv::COLOR_BGR2HLS);
 
 	in_point = false;
@@ -166,7 +167,6 @@ void Image_curve2::updateMat() {
 	cv::LUT(_src, lookuptable, dst);
 	cv::cvtColor(dst, dst, cv::COLOR_HLS2BGR);
 	emit signalsendmat(dst);
-	//cv::imshow("Ô¤ÀÀÍ¼", show);
 
 }
 
@@ -202,5 +202,6 @@ void Image_curve2::on_clicked_exitbutton() {
 
 	//cv::destroyAllWindows();
 	this->close();
+	cv::cvtColor(_src, _src, cv::COLOR_HLS2BGR);
 	emit signalsendmat(_src);
 }

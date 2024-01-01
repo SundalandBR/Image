@@ -141,7 +141,7 @@ void channel_hsl_l(hsl** hsl_src, hsl** hsl_dst, int offset, basecolor base_colo
 	}
 }
 
-void HUE(hsl** hsl,int offset, int rows, int cols) {
+void HUE_(hsl** hsl,int offset, int rows, int cols) {
 	int n = round(25 * offset / 100.f);
 	int hsl_table[360][2];
 	for (int i = 0; i < 360; i++) {
@@ -191,9 +191,8 @@ void Image_HUE(cv::InputArray src, cv::OutputArray dst, int offset) {
 	cv::Mat _dst = dst.getMat();
 	one_pixel_hsl** hsl;
 	hsl = RGB2HSL(src);
-	HUE(hsl, offset,_src.rows, _src.cols);
+	HUE_(hsl, offset,_src.rows, _src.cols);
 	HSL2RGB(_src, _dst, hsl);
-	cv::imshow("hue", _dst);
 }
 
 
@@ -208,6 +207,7 @@ void Image_Saturation(cv::InputArray src, cv::OutputArray dst, int offset) {
 		//±¥ºÍ¶È
 		hsl_table[i] = (i + offset*(255-i)/100.f );
 	}
+	hsl_table[0] = 0;
 	for (int i = 0; i < src.rows(); i++) {
 		for (int j = 0; j < src.cols(); j++) {
 			int s = hsl[i][j].s * 255;

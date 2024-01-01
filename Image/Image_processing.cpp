@@ -225,8 +225,8 @@ void Image_processing::on_hue_menu_clicked() {
 		QMessageBox::information(NULL, "ERROR", QString::fromLocal8Bit("δѡ��ͼƬ"), QMessageBox::Yes, QMessageBox::Yes);
 		return;
 	}
-	Color_t* w;
-	w = new Color_t;
+	HUE* w;
+	w = new HUE;
 	w->show();
 	connect(w, SIGNAL(send_mat(cv::Mat)), this, SLOT(receive_mat(cv::Mat)), Qt::UniqueConnection);
 	return;

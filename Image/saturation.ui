@@ -228,7 +228,14 @@ QMenu::item:selected {
           </spacer>
          </item>
          <item>
-          <widget class="QSpinBox" name="saturation_spinbox"/>
+          <widget class="QSpinBox" name="saturation_spinbox">
+           <property name="minimum">
+            <number>-100</number>
+           </property>
+           <property name="maximum">
+            <number>100</number>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
